@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Bài Giảng Toán 11</title>
+    <link rel="stylesheet" href="../main.css">
+    <style>
+        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; font-family: Arial, sans-serif; }
+        h1 { text-align: center; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .chapter-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .chapter { cursor: pointer; padding: 15px; border: 2px solid #fff; background: rgba(255,255,255,0.1); border-radius: 10px; transition: all 0.3s; }
+        .chapter:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
+        .lesson-list { display: none; margin-top: 20px; }
+        .lesson { cursor: pointer; padding: 10px; border: 2px solid #4CAF50; margin: 5px; background: #4CAF50; border-radius: 5px; color: #fff; transition: all 0.3s; }
+        .lesson:hover { background: #45a049; }
+        .content-frame { display: none; margin-top: 20px; border: 3px solid #fff; padding: 15px; height: 400px; overflow: auto; background: rgba(255,255,255,0.9); border-radius: 10px; }
+        .small-frame { display: inline-block; width: 18%; height: 120px; border: 2px solid #2196F3; margin: 5px; padding: 10px; background: #fff; border-radius: 5px; color: #000; overflow: hidden; }
+        .small-frame a { color: #2196F3; text-decoration: none; cursor: pointer; }
+        .small-frame a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Trang Bài Giảng Toán 11</h1>
+    <div class="chapter-list">
+        <div class="chapter" onclick="showLessons(1)">Chương 1: Hàm số</div>
+        <div class="chapter" onclick="showLessons(2)">Chương 2: Giới hạn</div>
+        <div class="chapter" onclick="showLessons(3)">Chương 3: Đạo hàm</div>
+        <div class="chapter" onclick="showLessons(4)">Chương 4: Tích phân</div>
+    </div>
+    <div id="lessons1" class="lesson-list">
+        <div class="lesson" onclick="showContent(1,1)">0101_LÝ THUYẾT & CÁC DẠNG TOÁN_GIÁ TRỊ LƯỢNG GIÁC CỦA GÓC LƯỢNG GIÁC </div>
+        <div class="lesson" onclick="showContent(1,2)">0101 LÝ THUYẾT BỔ SUNG GIÁ TRỊ LƯỢNG GIÁC CỦA CÁC GÓC LIÊN QUAN ĐẶC BIỆT</div>
+        <div class="lesson" onclick="showContent(1,3)">Bài 1.3: Đồ thị hàm số</div>
+    </div>
+    <div id="lessons2" class="lesson-list">
+        <div class="lesson" onclick="showContent(2,1)">Bài 2.1: Giới hạn hàm số</div>
+        <div class="lesson" onclick="showContent(2,2)">Bài 2.2: Tính liên tục</div>
+        <div class="lesson" onclick="showContent(2,3)">Bài 2.3: Ứng dụng</div>
+    </div>
+    <div id="lessons3" class="lesson-list">
+        <div class="lesson" onclick="showContent(3,1)">Bài 3.1: Định nghĩa đạo hàm</div>
+        <div class="lesson" onclick="showContent(3,2)">Bài 3.2: Quy tắc đạo hàm</div>
+        <div class="lesson" onclick="showContent(3,3)">Bài 3.3: Ứng dụng đạo hàm</div>
+    </div>
+    <div id="lessons4" class="lesson-list">
+        <div class="lesson" onclick="showContent(4,1)">Bài 4.1: Nguyên hàm</div>
+        <div class="lesson" onclick="showContent(4,2)">Bài 4.2: Tích phân xác định</div>
+        <div class="lesson" onclick="showContent(4,3)">Bài 4.3: Ứng dụng tích phân</div>
+    </div>
+    <div id="content" class="content-frame">
+        <div class="small-frame" id="frame1">Link bài giảng</div>
+        <div class="small-frame" id="frame2">Đề bài giảng</div>
+        <div class="small-frame" id="frame3">Link chữa bài tập</div>
+        <div class="small-frame" id="frame4">Đề bài tập</div>
+        <div class="small-frame" id="frame5">Link đề dáp án</div>
+    </div>
+    <script>
+        function showLessons(chapter) {
+            // Hide all lesson lists
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById('lessons' + i).style.display = 'none';
+            }
+            // Show the selected chapter's lessons
+            document.getElementById('lessons' + chapter).style.display = 'block';
+            // Hide content
+            document.getElementById('content').style.display = 'none';
+        }
+        function showContent(chapter, lesson) {
+            // Show content frame
+            document.getElementById('content').style.display = 'block';
+            // Customize content based on chapter and lesson
+            const contents = {
+                1: {
+                    1: [
+                        ['Bài 1.1: 0101 LÝ THUYẾT & CÁC DẠNG TOÁN GIÁ TRỊ LƯỢNG GIÁC CỦA GÓC LƯỢNG GIÁC', 'https://youtu.be/EUk1cBkl5ac'],
+                        ['ĐỀ BÀI GIẢNG', 'https://drive.google.com/file/d/1-9T-X-iO6Ejdz8BUm1v_ruVDEIFPmx4F/view?usp=sharing'],
+                        ['', ''],
+                        ['', ''],
+                        ['', '']
+                    ],
+                    2: [
+                        ['Bài 1.2: 0101 LÝ THUYẾT BỔ SUNG GIÁ TRỊ LƯỢNG GIÁC CỦA CÁC GÓC LIÊN QUAN ĐẶC BIỆT', 'https://youtu.be/jF3iOR7R0to?si=cgbBAXhL5feDrhy7'],
+                        ['KHÔNG CÓ ĐỀ BÀI GIẢNG', ''],
+                        ['VIDEO CHỮA BÀI TẬP', 'https://youtu.be/BiA3p28b3iQ'],
+                        ['đề bài tập', 'https://drive.google.com/file/d/1FcPJWPfi2CwZseM9TahLwGYfdSGJ31U6/view?usp=drive_link'],
+                        ['Link đề dáp án', 'https://drive.google.com/file/d/1FifJ62Q_2c5Yzm1iae0fpnrl2AQo01dz/view?usp=sharing']
+                    ],
+                    3: [
+                        ['Bài 1.3: Nghiên cứu hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Nghiên cứu hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Ứng dụng hàm', ''],
+                        ['', '']
+                    ]
+                },
+                2: {
+                    1: [
+                        ['Bài 2.1: Tính giới hạn', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Tính giới hạn', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Giới hạn hàm', ''],
+                        ['', '']
+                    ],
+                    2: [
+                        ['Bài 2.2: Liên tục', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Liên tục', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Điểm gián đoạn', ''],
+                        ['', '']
+                    ],
+                    3: [
+                        ['Bài 2.3: Ứng dụng', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Ứng dụng', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Tính giới hạn phức tạp', ''],
+                        ['', '']
+                    ]
+                },
+                3: {
+                    1: [
+                        ['Bài 3.1: Định nghĩa đạo hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Định nghĩa đạo hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Tính đạo hàm', ''],
+                        ['', '']
+                    ],
+                    2: [
+                        ['Bài 3.2: Quy tắc đạo hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Quy tắc đạo hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Đạo hàm hàm hợp', ''],
+                        ['', '']
+                    ],
+                    3: [
+                        ['Bài 3.3: Ứng dụng đạo hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Ứng dụng đạo hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Tìm cực đại cực tiểu', ''],
+                        ['', '']
+                    ]
+                },
+                4: {
+                    1: [
+                        ['Bài 4.1: Nguyên hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Nguyên hàm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Tính nguyên hàm', ''],
+                        ['', '']
+                    ],
+                    2: [
+                        ['Bài 4.2: Tích phân xác định', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Tích phân xác định', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Tính diện tích', ''],
+                        ['', '']
+                    ],
+                    3: [
+                        ['Bài 4.3: Ứng dụng tích phân', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Đề bài: Ứng dụng tích phân', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Xem chữa bài tập', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld'],
+                        ['Bài tập: Tính thể tích', ''],
+                        ['', '']
+                    ]
+                }
+            };
+            const lessonContent = contents[chapter][lesson];
+            for (let i = 0; i < 5; i++) {
+                const frame = document.getElementById('frame' + (i+1));
+                const [title, link] = lessonContent[i];
+                if (link) {
+                    frame.innerHTML = '<a href="' + link + '" target="_blank">' + title + '</a>';
+                } else {
+                    frame.innerHTML = title;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

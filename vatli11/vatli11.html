@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Bài Giảng Vật Lý 11</title>
+    <link rel="stylesheet" href="../main.css">
+    <style>
+        body { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: #fff; font-family: Arial, sans-serif; }
+        h1 { text-align: center; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .chapter-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .chapter { cursor: pointer; padding: 15px; border: 2px solid #fff; background: rgba(255,255,255,0.1); border-radius: 10px; transition: all 0.3s; }
+        .chapter:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
+        .lesson-list { display: none; margin-top: 20px; }
+        .lesson { cursor: pointer; padding: 10px; border: 2px solid #FF9800; margin: 5px; background: #FF9800; border-radius: 5px; color: #fff; transition: all 0.3s; }
+        .lesson:hover { background: #e68900; }
+        .content-frame { display: none; margin-top: 20px; border: 3px solid #fff; padding: 15px; height: 400px; overflow: auto; background: rgba(255,255,255,0.9); border-radius: 10px; }
+        .small-frame { display: inline-block; width: 22%; height: 120px; border: 2px solid #9C27B0; margin: 5px; padding: 10px; background: #fff; border-radius: 5px; color: #000; overflow: hidden; }
+        .small-frame a { color: #9C27B0; text-decoration: none; cursor: pointer; }
+        .small-frame a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Trang Bài Giảng Vật Lý 11</h1>
+    <div class="chapter-list">
+        <div class="chapter" onclick="showLessons(1)">Chương 1: Động học</div>
+        <div class="chapter" onclick="showLessons(2)">Chương 2: Động lực học</div>
+        <div class="chapter" onclick="showLessons(3)">Chương 3: Năng lượng</div>
+        <div class="chapter" onclick="showLessons(4)">Chương 4: Chuyển động tròn</div>
+    </div>
+    <div id="lessons1" class="lesson-list">
+        <div class="lesson" onclick="showContent(1,1)">Bài 1.1: Vận tốc</div>
+        <div class="lesson" onclick="showContent(1,2)">Bài 1.2: Gia tốc</div>
+        <div class="lesson" onclick="showContent(1,3)">Bài 1.3: Phương trình chuyển động</div>
+    </div>
+    <div id="lessons2" class="lesson-list">
+        <div class="lesson" onclick="showContent(2,1)">Bài 2.1: Lực</div>
+        <div class="lesson" onclick="showContent(2,2)">Bài 2.2: Định luật Newton</div>
+        <div class="lesson" onclick="showContent(2,3)">Bài 2.3: Ma sát</div>
+    </div>
+    <div id="lessons3" class="lesson-list">
+        <div class="lesson" onclick="showContent(3,1)">Bài 3.1: Công</div>
+        <div class="lesson" onclick="showContent(3,2)">Bài 3.2: Năng lượng</div>
+        <div class="lesson" onclick="showContent(3,3)">Bài 3.3: Bảo toàn năng lượng</div>
+    </div>
+    <div id="lessons4" class="lesson-list">
+        <div class="lesson" onclick="showContent(4,1)">Bài 4.1: Chuyển động tròn đều</div>
+        <div class="lesson" onclick="showContent(4,2)">Bài 4.2: Lực ly tâm</div>
+        <div class="lesson" onclick="showContent(4,3)">Bài 4.3: Ứng dụng</div>
+    </div>
+    <div id="content" class="content-frame">
+        <div class="small-frame" id="frame1">Link bài giảng</div>
+        <div class="small-frame" id="frame2">Đề bài giảng</div>
+        <div class="small-frame" id="frame3">Link chữa bài tập</div>
+        <div class="small-frame" id="frame4">Đề bài tập</div>
+    </div>
+    <script>
+        function showLessons(chapter) {
+            // Hide all lesson lists
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById('lessons' + i).style.display = 'none';
+            }
+            // Show the selected chapter's lessons
+            document.getElementById('lessons' + chapter).style.display = 'block';
+            // Hide content
+            document.getElementById('content').style.display = 'none';
+        }
+        function showContent(chapter, lesson) {
+            // Show content frame
+            document.getElementById('content').style.display = 'block';
+            // Customize content based on chapter and lesson
+            const contents = {
+                1: {
+                    1: ['Bài 1.1: Vận tốc', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Tính vận tốc', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Phương trình chuyển động'],
+                    2: ['Bài 1.2: Gia tốc', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Tính gia tốc', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Chuyển động thẳng'],
+                    3: ['Bài 1.3: Phương trình chuyển động', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Viết phương trình', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Bài toán động học']
+                },
+                2: {
+                    1: ['Bài 2.1: Lực', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Phân tích lực', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Hệ lực'],
+                    2: ['Bài 2.2: Định luật Newton', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Áp dụng định luật', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Bài toán động lực'],
+                    3: ['Bài 2.3: Ma sát', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Tính ma sát', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Chuyển động trên mặt phẳng']
+                },
+                3: {
+                    1: ['Bài 3.1: Công', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Tính công', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Công của lực'],
+                    2: ['Bài 3.2: Năng lượng', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Tính năng lượng', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Bảo toàn năng lượng'],
+                    3: ['Bài 3.3: Bảo toàn năng lượng', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Ứng dụng định luật', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Bài toán năng lượng']
+                },
+                4: {
+                    1: ['Bài 4.1: Chuyển động tròn đều', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Tính tốc độ góc', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Chuyển động tròn'],
+                    2: ['Bài 4.2: Lực ly tâm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Tính lực ly tâm', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Bài toán lực ly tâm'],
+                    3: ['Bài 4.3: Ứng dụng', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Đề bài: Bài toán thực tế', 'https://youtu.be/mGYNE0GDGsI?si=O9qrY_hU7DAnD5Ld', 'Bài tập: Chuyển động phức tạp']
+                }
+            };
+            const lessonContent = contents[chapter][lesson];
+            document.getElementById('frame1').innerHTML = '<a href="' + lessonContent[1] + '" target="_blank">' + lessonContent[0] + '</a>';
+            document.getElementById('frame2').innerHTML = lessonContent[2];
+            document.getElementById('frame3').innerHTML = '<a href="' + lessonContent[3] + '" target="_blank">Xem chữa bài tập</a>';
+            document.getElementById('frame4').innerHTML = lessonContent[4];
+        }
+    </script>
+</body>
+</html>
